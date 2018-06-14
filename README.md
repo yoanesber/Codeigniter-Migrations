@@ -1,12 +1,9 @@
-###################
-What is Migrations
-###################
+<H2>Codeigniter - Migrations</H2>
 
 Migrations are a convenient way for you to alter your database in a structured and organized manner. You could edit fragments of SQL by hand but you would then be responsible for telling other developers that they need to go and run them. You would also have to keep track of which changes need to be run against the production machines next time you deploy.
 
-************
-Installation
-************
+
+## Installation
 
 Please see the `migrations section <http://localhost/_Project/HJM_Logistic3/user_guide/libraries/migration.html>`_
 of the CodeIgniter User Guide.
