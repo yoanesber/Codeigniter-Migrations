@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 <H2>Codeigniter - Migrations</H2>
-=======
-<H2>Ratchet - PHP Websocket</H2>
->>>>>>> faf2851b7ac5b5669b7a1c0cd6df9ab518989466
 
 Migrations are a convenient way for you to alter your database in a structured and organized manner. You could edit fragments of SQL by hand but you would then be responsible for telling other developers that they need to go and run them. You would also have to keep track of which changes need to be run against the production machines next time you deploy.
 
 
-<<<<<<< HEAD
 ## Installation
-=======
-## Intallation
->>>>>>> faf2851b7ac5b5669b7a1c0cd6df9ab518989466
 
 Please see the `migrations section <http://localhost/_Project/HJM_Logistic3/user_guide/libraries/migration.html>`_
 of the CodeIgniter User Guide.
