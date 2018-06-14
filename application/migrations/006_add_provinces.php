@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_Add_users extends CI_Migration {
+class Migration_Add_provinces extends CI_Migration {
 
         public function up()
         {
@@ -13,35 +13,10 @@ class Migration_Add_users extends CI_Migration {
                                 'unsigned' => TRUE,
                                 'auto_increment' => TRUE
                         ),
-                        'email' => array(
+                        'name' => array(
                                 'type' => 'VARCHAR',
                                 'constraint' => '255',
                                 'null' => FALSE,
-                        ),
-                        'auth_key' => array(
-                                'type' => 'VARCHAR',
-                                'constraint' => '255',
-                                'null' => FALSE,
-                        ),
-                        'login_remember' => array(
-                                'type' => 'INT',
-                                'constraint' => 1,
-                                'null' => FALSE,
-                                'default' => 0,
-                        ),
-                        'last_login' => array(
-                                'type' => 'DATETIME',
-                                'null' => TRUE
-                        ),
-                        'first_name' => array(
-                                'type' => 'VARCHAR',
-                                'constraint' => '255',
-                                'null' => FALSE,
-                        ),
-                        'last_name' => array(
-                                'type' => 'VARCHAR',
-                                'constraint' => '255',
-                                'null' => TRUE,
                         ),
                         'status' => array(
                                 'type' => 'INT',
@@ -68,11 +43,18 @@ class Migration_Add_users extends CI_Migration {
                         ),
                 ));
                 $this->dbforge->add_key('id', TRUE);
-                $this->dbforge->create_table('users');
+                $this->dbforge->create_table('provinces');
+
+                //Seeder for provinces
+                $data_seeder = array(
+                        array('name' => 'DKI Jakarta'),
+                        array('name' => 'Jawa Barat')
+                );
+                $this->db->insert_batch('provinces', $data_seeder);
         }
 
         public function down()
         {
-                $this->dbforge->drop_table('users');
+                $this->dbforge->drop_table('provinces');
         }
 }

@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_Add_users extends CI_Migration {
+class Migration_Add_regencies extends CI_Migration {
 
         public function up()
         {
@@ -13,35 +13,16 @@ class Migration_Add_users extends CI_Migration {
                                 'unsigned' => TRUE,
                                 'auto_increment' => TRUE
                         ),
-                        'email' => array(
+                        'name' => array(
                                 'type' => 'VARCHAR',
                                 'constraint' => '255',
                                 'null' => FALSE,
                         ),
-                        'auth_key' => array(
-                                'type' => 'VARCHAR',
-                                'constraint' => '255',
-                                'null' => FALSE,
-                        ),
-                        'login_remember' => array(
+                        'province_id' => array(
                                 'type' => 'INT',
-                                'constraint' => 1,
-                                'null' => FALSE,
-                                'default' => 0,
-                        ),
-                        'last_login' => array(
-                                'type' => 'DATETIME',
-                                'null' => TRUE
-                        ),
-                        'first_name' => array(
-                                'type' => 'VARCHAR',
-                                'constraint' => '255',
-                                'null' => FALSE,
-                        ),
-                        'last_name' => array(
-                                'type' => 'VARCHAR',
-                                'constraint' => '255',
-                                'null' => TRUE,
+                                'constraint' => 11,
+                                'unsigned' => TRUE,
+                                'null' => FALSE
                         ),
                         'status' => array(
                                 'type' => 'INT',
@@ -66,13 +47,26 @@ class Migration_Add_users extends CI_Migration {
                                 'unsigned' => TRUE,
                                 'null' => TRUE,
                         ),
+                        'FOREIGN KEY (province_id) REFERENCES provinces(id)',
                 ));
                 $this->dbforge->add_key('id', TRUE);
-                $this->dbforge->create_table('users');
+                $this->dbforge->create_table('regencies');
+
+                //Seeder for regencies
+                $data_seeder = array(
+                        array('name' => 'Jakarta Barat', 'province_id' => 1),
+                        array('name' => 'Jakarta Timur', 'province_id' => 1),
+                        array('name' => 'Jakarta Selatan', 'province_id' => 1),
+                        array('name' => 'Jakarta Utara', 'province_id' => 1),
+                        array('name' => 'Jakarta Pusat', 'province_id' => 1),
+                        array('name' => 'Kota Bogor', 'province_id' => 2),
+                        array('name' => 'Kabputen Bogor', 'province_id' => 2)
+                );
+                $this->db->insert_batch('regencies', $data_seeder);
         }
 
         public function down()
         {
-                $this->dbforge->drop_table('users');
+                $this->dbforge->drop_table('regencies');
         }
 }

@@ -26,12 +26,15 @@ class Migration_Add_user_roles extends CI_Migration {
                         'status' => array(
                                 'type' => 'INT',
                                 'null' => FALSE,
+                                'default' => 1,
                         ),
                         'created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP',
                         'created_by' => array(
                                 'type' => 'INT',
                                 'constraint' => 11,
                                 'unsigned' => TRUE,
+                                'default' => 1,
+                                'null' => FALSE,
                         ),
                         'updated_at' => array(
                                 'type' => 'DATETIME',
@@ -41,6 +44,7 @@ class Migration_Add_user_roles extends CI_Migration {
                                 'type' => 'INT',
                                 'constraint' => 11,
                                 'unsigned' => TRUE,
+                                'null' => TRUE,
                         ),
                         'FOREIGN KEY (user_id) REFERENCES users(id)',
                         'FOREIGN KEY (role_id) REFERENCES roles(id)',
